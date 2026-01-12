@@ -398,11 +398,16 @@ section p {
         background: rgba(102, 126, 234, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        /* Changed from center to prevent top clipping */
+        padding-top: 80px;
+        /* Visual balance since we removed center */
         align-items: center;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
         transition: right 0.4s ease;
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        /* Enable vertical scrolling */
     }
 
     /* Show Menu when Active */
