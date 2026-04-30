@@ -613,9 +613,6 @@ section p {
     animation: marquee-scroll 25s linear infinite;
 }
 
-.marquee-container:hover .marquee-content {
-    animation-play-state: paused;
-}
 
 .marquee-content i {
     font-size: 3.5rem;
