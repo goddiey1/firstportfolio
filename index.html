@@ -12,14 +12,18 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/style.css?v=7">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
     <header class="site-header">
-        <h1>GODFREY WAMBUGU</h1>
-        <p>Maths & Computer Science Student | Aspiring Developer</p>
+        <div class="accent-chip animate-fade-up" style="margin-bottom: 24px;">
+            <span style="height: 6px; width: 6px; border-radius: 50%; background: var(--foreground); display: inline-block;"></span>
+            Available for work
+        </div>
+        <h1 class="animate-fade-up delay-100">Hey — It's Godfrey Wambugu</h1>
+        <p class="animate-fade-up delay-200">Maths & Computer Science Student | Aspiring Developer</p>
     </header>
 
     <nav class="site-nav">
@@ -39,7 +43,7 @@
 
 
     <main>
-        <section id="about">
+        <section id="about" class="animate-fade-up delay-300">
             <h2>About Me</h2>
             <p>
                 I'm a Mathematics and Computer Science student with a focus on full-stack web development and
@@ -51,7 +55,7 @@
         <section id="skills">
             <h2>Skills</h2>
             <div class="skills-grid">
-                <div class="skill-item">
+                <div class="skill-item hover-lift">
                     <h3>Frontend</h3>
                     <ul>
                         <li>HTML5 & CSS3</li>
@@ -59,7 +63,7 @@
                         <li>Responsive Design</li>
                     </ul>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item hover-lift">
                     <h3>Backend & Frameworks</h3>
                     <ul>
                         <li>Node.js</li>
@@ -67,7 +71,7 @@
                         <li>APIs</li>
                     </ul>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item hover-lift">
                     <h3>Tools & Workflow</h3>
                     <ul>
                         <li>Git & GitHub</li>
@@ -75,7 +79,7 @@
                         <li>Chrome DevTools</li>
                     </ul>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item hover-lift">
                     <h3>Core Competencies</h3>
                     <ul>
                         <li>Problem Solving</li>
@@ -96,7 +100,7 @@
             </div>
 
             <div class="projects-grid">
-                <article class="project" data-category="web">
+                <article class="project hover-lift" data-category="web">
                     <h3>Portfolio Website</h3>
                     <p class="project-brief">
                         A responsive personal portfolio built with HTML, CSS, and JavaScript.
@@ -112,7 +116,7 @@
                     </div>
                 </article>
 
-                <article class="project" data-category="web">
+                <article class="project hover-lift" data-category="web">
                     <h3>To-Do App</h3>
                     <p class="project-brief">
                         A smart task management app with real-time notifications.
@@ -132,7 +136,7 @@
                     </div>
                 </article>
 
-                <article class="project" data-category="web">
+                <article class="project hover-lift" data-category="web">
                     <h3>Microservices E-Commerce Platform</h3>
                     <p class="project-brief">
                         A full-stack, scalable e-commerce platform built on a microservices architecture.
