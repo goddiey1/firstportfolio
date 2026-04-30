@@ -105,6 +105,64 @@ h1, h2, h3, h4 {
     box-shadow: var(--shadow-lift);
 }
 
+/* ==================== INTRO SVG ANIMATION ==================== */
+.intro-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 50; /* Above background, behind nav */
+    overflow: hidden;
+}
+
+.swoop-line {
+    /* Path length is roughly 150 in 100x100 space */
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawLine 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes drawLine {
+    0% { stroke-dashoffset: 200; opacity: 1; }
+    80% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.sparks {
+    opacity: 0;
+    animation: showSparks 0.1s 1.2s forwards;
+}
+
+@keyframes showSparks {
+    to { opacity: 1; }
+}
+
+.spark {
+    transform-origin: 0 0;
+}
+
+/* 8 unique flying spark animations */
+.spark.s1 { animation: sparkFly1 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s2 { animation: sparkFly2 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s3 { animation: sparkFly3 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s4 { animation: sparkFly4 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s5 { animation: sparkFly5 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s6 { animation: sparkFly6 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s7 { animation: sparkFly7 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.spark.s8 { animation: sparkFly8 0.8s 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+
+/* Transform in percentage relative to viewport (1% = 1vw/1vh roughly due to viewBox) */
+@keyframes sparkFly1 { 100% { transform: translate(-5px, -8px) scale(0); opacity: 0; } }
+@keyframes sparkFly2 { 100% { transform: translate(7px, -6px) scale(0); opacity: 0; } }
+@keyframes sparkFly3 { 100% { transform: translate(-4px, 6px) scale(0); opacity: 0; } }
+@keyframes sparkFly4 { 100% { transform: translate(8px, 4px) scale(0); opacity: 0; } }
+@keyframes sparkFly5 { 100% { transform: translate(0px, -10px) scale(0); opacity: 0; } }
+@keyframes sparkFly6 { 100% { transform: translate(-8px, 0px) scale(0); opacity: 0; } }
+@keyframes sparkFly7 { 100% { transform: translate(6px, 7px) scale(0); opacity: 0; } }
+@keyframes sparkFly8 { 100% { transform: translate(-6px, -4px) scale(0); opacity: 0; } }
+
 .accent-chip {
     background: var(--accent);
     color: var(--foreground);

@@ -15,11 +15,38 @@
     <!-- Devicon for Marquee -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="stylesheet" href="css/style.css?v=12">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
+    <!-- Intro Animation Overlay -->
+    <svg class="intro-animation" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+        <!-- The swooping line -->
+        <path class="swoop-line" d="M 85 10 Q 20 30, 35 55 T 60 75" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+        
+        <!-- Sparks -->
+        <g class="sparks" transform="translate(60, 75)">
+            <path class="spark s1" d="M 0 0 L 0.01 0.01" stroke="#60a5fa" stroke-width="8" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s2" d="M 0 0 L 0.01 0.01" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s3" d="M 0 0 L 0.01 0.01" stroke="#93c5fd" stroke-width="10" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s4" d="M 0 0 L 0.01 0.01" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s5" d="M 0 0 L 0.01 0.01" stroke="#60a5fa" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s6" d="M 0 0 L 0.01 0.01" stroke="#93c5fd" stroke-width="9" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s7" d="M 0 0 L 0.01 0.01" stroke="#ffffff" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+            <path class="spark s8" d="M 0 0 L 0.01 0.01" stroke="#ffffff" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke" filter="url(#glow)" />
+        </g>
+    </svg>
+
     <header class="site-header">
         <div class="accent-chip animate-fade-up" style="margin-bottom: 24px;">
             <span class="status-dot"></span>
