@@ -118,23 +118,23 @@ h1, h2, h3, h4 {
 }
 
 .swoop-line {
-    /* Large enough to cover the ~150 path length */
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    animation: drawLine 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    /* Exact match to pathLength="100" */
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawLine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes drawLine {
-    0% { stroke-dashoffset: 200; opacity: 1; }
-    80% { stroke-dashoffset: 0; opacity: 1; }
+    0% { stroke-dashoffset: 100; opacity: 1; }
+    85% { stroke-dashoffset: 0; opacity: 1; }
     100% { stroke-dashoffset: 0; opacity: 0; }
 }
 
 .html-sparks {
     position: absolute;
-    /* 45% 80vh roughly matches the end of the SVG path */
-    top: 80vh; 
-    left: 45vw;
+    /* 35% 85vh matches the end of the new SVG path perfectly */
+    top: 85vh; 
+    left: 35vw;
     z-index: 51;
     pointer-events: none;
 }
@@ -156,15 +156,15 @@ h1, h2, h3, h4 {
 .h-spark.s7 { width: 4px; height: 4px; background: #ffffff; color: #ffffff; }
 .h-spark.s8 { width: 5px; height: 5px; background: #ffffff; color: #ffffff; }
 
-/* The animations: start exactly at 2.8s when line finishes drawing */
-.h-spark.s1 { animation: hSparkFly1 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s2 { animation: hSparkFly2 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s3 { animation: hSparkFly3 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s4 { animation: hSparkFly4 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s5 { animation: hSparkFly5 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s6 { animation: hSparkFly6 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s7 { animation: hSparkFly7 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.h-spark.s8 { animation: hSparkFly8 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+/* The animations: start exactly at 2.5s when line finishes drawing */
+.h-spark.s1 { animation: hSparkFly1 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s2 { animation: hSparkFly2 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s3 { animation: hSparkFly3 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s4 { animation: hSparkFly4 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s5 { animation: hSparkFly5 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s6 { animation: hSparkFly6 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s7 { animation: hSparkFly7 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s8 { animation: hSparkFly8 1.0s 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
 
 /* Large pixel translations for visible explosion */
 @keyframes hSparkFly1 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(-60px, -90px) scale(0); opacity: 0; } }
