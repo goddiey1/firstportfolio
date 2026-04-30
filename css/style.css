@@ -478,7 +478,8 @@ section p {
     }
 
     .skills-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm); /* Slightly smaller gap to fit both columns nicely on small screens */
     }
 
     .project-links {
