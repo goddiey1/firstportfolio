@@ -112,9 +112,31 @@ h1, h2, h3, h4 {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 12px;
-    font-size: 0.75rem;
+    padding: 6px 14px;
+    font-size: 0.8rem;
     font-weight: 600;
+}
+
+.status-dot {
+    position: relative;
+    height: 6px; 
+    width: 6px;
+    border-radius: 50%;
+    background: var(--foreground);
+    display: inline-block;
+}
+
+.status-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: inherit;
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+    75%, 100% { transform: scale(3); opacity: 0; }
 }
 
 /* ==================== HEADER ==================== */

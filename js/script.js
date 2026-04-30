@@ -122,27 +122,41 @@ window.addEventListener('scroll', throttle(highlightNavOnScroll, 100));
 
 
 // ==================== INTERSECTION OBSERVER FOR ANIMATIONS ====================
-// Add fade-in animation when sections come into view
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver(function (entries) {
+let delayCounter = 0;
+let delayResetTimeout;
+
+const observer = new IntersectionObserver(function (entries, observer) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            // Apply a slight stagger delay for batch entries
+            entry.target.style.animationDelay = `${delayCounter * 0.15}s`;
+            entry.target.classList.add('animate-fade-up');
+            
+            // Clean up the inline opacity so the animation takes over
+            entry.target.style.opacity = '';
+            observer.unobserve(entry.target);
+            
+            delayCounter++;
+            clearTimeout(delayResetTimeout);
+            delayResetTimeout = setTimeout(() => {
+                delayCounter = 0;
+            }, 150);
         }
     });
 }, observerOptions);
 
-// Observe all sections
-sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
+// Observe sections and individual cards for beautiful staggered entry
+const animatedElements = document.querySelectorAll('section:not(:first-of-type), .project, .skill-item');
+
+animatedElements.forEach(el => {
+    // Keep them hidden initially so they don't flash before the animation starts
+    el.style.opacity = '0';
+    observer.observe(el);
 });
 
 // ==================== PROJECT FILTERING ====================
