@@ -566,6 +566,43 @@ section p {
     box-shadow: var(--shadow-soft);
 }
 
+/* ==================== MARQUEE ==================== */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0;
+    margin: 1rem 0 3rem;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-content i {
+    font-size: 3.5rem;
+    filter: grayscale(100%) opacity(0.5);
+    transition: all var(--transition-normal);
+}
+
+.marquee-container:hover .marquee-content i {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 2rem)); }
+}
+
 /* ==================== FOOTER ==================== */
 .site-footer {
     text-align: center;
