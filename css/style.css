@@ -118,50 +118,63 @@ h1, h2, h3, h4 {
 }
 
 .swoop-line {
-    /* Exact match to pathLength="100" */
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: drawLine 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    /* Large enough to cover the ~150 path length */
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawLine 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes drawLine {
-    0% { stroke-dashoffset: 100; opacity: 1; }
+    0% { stroke-dashoffset: 200; opacity: 1; }
     80% { stroke-dashoffset: 0; opacity: 1; }
     100% { stroke-dashoffset: 0; opacity: 0; }
 }
 
-.sparks {
+.html-sparks {
+    position: absolute;
+    /* 45% 80vh roughly matches the end of the SVG path */
+    top: 80vh; 
+    left: 45vw;
+    z-index: 51;
+    pointer-events: none;
+}
+
+.h-spark {
+    position: absolute;
+    border-radius: 50%;
     opacity: 0;
-    animation: showSparks 0.1s 2.0s forwards;
+    box-shadow: 0 0 8px currentColor;
 }
 
-@keyframes showSparks {
-    to { opacity: 1; }
-}
+/* Base styling for sparks */
+.h-spark.s1 { width: 8px; height: 8px; background: #60a5fa; color: #60a5fa; }
+.h-spark.s2 { width: 6px; height: 6px; background: #3b82f6; color: #3b82f6; }
+.h-spark.s3 { width: 10px; height: 10px; background: #93c5fd; color: #93c5fd; }
+.h-spark.s4 { width: 7px; height: 7px; background: #3b82f6; color: #3b82f6; }
+.h-spark.s5 { width: 5px; height: 5px; background: #60a5fa; color: #60a5fa; }
+.h-spark.s6 { width: 9px; height: 9px; background: #93c5fd; color: #93c5fd; }
+.h-spark.s7 { width: 4px; height: 4px; background: #ffffff; color: #ffffff; }
+.h-spark.s8 { width: 5px; height: 5px; background: #ffffff; color: #ffffff; }
 
-.spark {
-    transform-origin: center;
-}
+/* The animations: start exactly at 2.8s when line finishes drawing */
+.h-spark.s1 { animation: hSparkFly1 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s2 { animation: hSparkFly2 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s3 { animation: hSparkFly3 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s4 { animation: hSparkFly4 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s5 { animation: hSparkFly5 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s6 { animation: hSparkFly6 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s7 { animation: hSparkFly7 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+.h-spark.s8 { animation: hSparkFly8 1.0s 2.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
 
-/* 8 unique flying spark animations */
-.spark.s1 { animation: sparkFly1 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s2 { animation: sparkFly2 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s3 { animation: sparkFly3 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s4 { animation: sparkFly4 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s5 { animation: sparkFly5 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s6 { animation: sparkFly6 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s7 { animation: sparkFly7 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-.spark.s8 { animation: sparkFly8 1.2s 2.0s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
-
-/* Large px translate makes them fly outward visibly */
-@keyframes sparkFly1 { 100% { transform: translate(-30px, -45px); opacity: 0; } }
-@keyframes sparkFly2 { 100% { transform: translate(40px, -35px); opacity: 0; } }
-@keyframes sparkFly3 { 100% { transform: translate(-25px, 40px); opacity: 0; } }
-@keyframes sparkFly4 { 100% { transform: translate(45px, 25px); opacity: 0; } }
-@keyframes sparkFly5 { 100% { transform: translate(0px, -55px); opacity: 0; } }
-@keyframes sparkFly6 { 100% { transform: translate(-45px, 0px); opacity: 0; } }
-@keyframes sparkFly7 { 100% { transform: translate(35px, 40px); opacity: 0; } }
-@keyframes sparkFly8 { 100% { transform: translate(-35px, -20px); opacity: 0; } }
+/* Large pixel translations for visible explosion */
+@keyframes hSparkFly1 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(-60px, -90px) scale(0); opacity: 0; } }
+@keyframes hSparkFly2 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(80px, -70px) scale(0); opacity: 0; } }
+@keyframes hSparkFly3 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(-50px, 80px) scale(0); opacity: 0; } }
+@keyframes hSparkFly4 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(90px, 50px) scale(0); opacity: 0; } }
+@keyframes hSparkFly5 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(0px, -110px) scale(0); opacity: 0; } }
+@keyframes hSparkFly6 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(-90px, 0px) scale(0); opacity: 0; } }
+@keyframes hSparkFly7 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(70px, 80px) scale(0); opacity: 0; } }
+@keyframes hSparkFly8 { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { transform: translate(-70px, -40px) scale(0); opacity: 0; } }
 
 .accent-chip {
     background: var(--accent);
