@@ -479,7 +479,20 @@ section p {
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-sm); /* Slightly smaller gap to fit both columns nicely on small screens */
+        gap: 10px; 
+    }
+
+    .skill-item {
+        padding: 12px;
+    }
+
+    .skill-item h3 {
+        font-size: 1rem;
+    }
+
+    .skill-item li {
+        font-size: 0.85rem;
+        padding-left: 15px;
     }
 
     .project-links {
