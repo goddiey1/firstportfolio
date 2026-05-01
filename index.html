@@ -15,7 +15,7 @@
     <!-- Devicon for Marquee -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-    <link rel="stylesheet" href="css/style.css?v=15">
+    <link rel="stylesheet" href="css/style.css?v=18">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
@@ -24,7 +24,7 @@
     <svg class="intro-animation" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feGaussianBlur stdDeviation="1" result="blur" />
                 <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
@@ -32,7 +32,7 @@
             </filter>
         </defs>
         <!-- The swooping solid line -->
-        <path class="swoop-line" d="M 85 15 C 40 10, -10 30, 20 50 C 60 70, 70 80, 35 85" pathLength="100" fill="none" stroke="#3b82f6" stroke-width="0.8" stroke-linecap="round" filter="url(#glow)" />
+        <path class="swoop-line" d="M 88 12 Q 84 52 78 90" pathLength="100" fill="none" stroke="#60a5fa" stroke-width="0.42" stroke-linecap="round" filter="url(#glow)" />
     </svg>
 
     <!-- HTML Sparks for perfect explosive scaling -->
@@ -46,6 +46,7 @@
         <div class="h-spark s7"></div>
         <div class="h-spark s8"></div>
     </div>
+    <div class="intro-flash" aria-hidden="true"></div>
 
     <header class="site-header">
         <div class="accent-chip animate-fade-up" style="margin-bottom: 24px;">
