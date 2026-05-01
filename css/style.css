@@ -492,6 +492,10 @@ section p {
     flex-direction: column;
 }
 
+.project[hidden] {
+    display: none;
+}
+
 .project h3 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-sm);

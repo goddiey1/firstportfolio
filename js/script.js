@@ -163,33 +163,40 @@ animatedElements.forEach(el => {
 const filterButtons = document.querySelectorAll('.filter-controls button');
 const projects = document.querySelectorAll('.project');
 
+function projectMatchesFilter(project, filter) {
+    if (filter === 'all') {
+        return true;
+    }
+
+    const categories = (project.dataset.categories || project.dataset.category || '')
+        .split(',')
+        .map(category => category.trim())
+        .filter(Boolean);
+
+    return categories.includes(filter);
+}
+
+function filterProjects(filter) {
+    projects.forEach(project => {
+        const shouldShow = projectMatchesFilter(project, filter);
+
+        project.hidden = !shouldShow;
+        project.style.opacity = shouldShow ? '1' : '';
+        project.style.transform = shouldShow ? 'translateY(0)' : '';
+    });
+}
+
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all buttons
         filterButtons.forEach(btn => {
             btn.classList.remove('active');
             btn.setAttribute('aria-pressed', 'false');
         });
 
-        // Add active class to clicked button
         button.classList.add('active');
         button.setAttribute('aria-pressed', 'true');
 
-        const filter = button.dataset.filter;
-
-        projects.forEach(project => {
-            if (filter === 'all' || project.dataset.category === filter) {
-                project.removeAttribute('hidden');
-                // Optional: simple fade in
-                project.style.opacity = '1';
-                project.style.transform = 'translateY(0)';
-            } else {
-                project.setAttribute('hidden', '');
-                // Ensure it's visually hidden if CSS overrides [hidden]
-                project.style.opacity = '0';
-                project.style.transform = 'translateY(20px)';
-            }
-        });
+        filterProjects(button.dataset.filter);
     });
 });
 const form = document.getElementById("contactForm");
