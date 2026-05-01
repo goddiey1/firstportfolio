@@ -290,17 +290,17 @@ h1, h2, h3, h4 {
 .hamburger {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    background: rgba(250, 250, 250, 0.8);
+    gap: 4px;
+    background: rgba(250, 250, 250, 0.88);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border);
     border-radius: 50%;
     cursor: pointer;
-    padding: 16px;
+    padding: 11px;
     z-index: 1001;
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: 16px;
+    right: 16px;
     pointer-events: auto;
     box-shadow: var(--shadow-soft);
     transition: all var(--transition-normal);
@@ -312,7 +312,7 @@ h1, h2, h3, h4 {
 }
 
 .hamburger span {
-    width: 22px;
+    width: 18px;
     height: 2px;
     background: var(--foreground);
     border-radius: 2px;
@@ -321,57 +321,70 @@ h1, h2, h3, h4 {
 
 /* Hamburger Animation when Active */
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
+    transform: rotate(45deg) translate(4px, 4px);
 }
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -6px);
+    transform: rotate(-45deg) translate(4px, -5px);
 }
 
-/* Hidden side menu */
+/* Compact floating menu */
 .nav-links {
     position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 300px;
-    max-width: 80vw;
-    background: rgba(250, 250, 250, 0.98);
-    backdrop-filter: blur(20px);
+    top: 62px;
+    right: 16px;
+    width: 138px;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    padding: 8px;
+    background: rgba(250, 250, 250, 0.96);
+    backdrop-filter: blur(16px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-lg);
+    align-items: stretch;
+    gap: 4px;
     z-index: 999;
-    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    border-left: 1px solid var(--border);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
-    pointer-events: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px) scale(0.96);
+    transform-origin: top right;
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s var(--transition-smooth),
+        visibility 0.22s ease;
+    visibility: hidden;
 }
 
 .nav-links.active {
-    right: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    visibility: visible;
 }
 
 .site-nav a {
     color: var(--foreground);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.5rem;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    line-height: 1.1;
+    padding: 8px 10px;
+    border-radius: 6px;
     transition: all var(--transition-normal);
     opacity: 0.8;
+    text-align: center;
 }
 
 .site-nav a:hover,
 .site-nav a.active {
     opacity: 1;
     background: var(--muted);
-    transform: translateX(-5px);
+    transform: translateY(-1px);
 }
 
 /* ==================== MAIN CONTENT ==================== */
@@ -821,8 +834,8 @@ section p {
 
 @media (max-width: 480px) {
     .nav-links {
-        width: 80%;
-        max-width: 200px;
+        width: 132px;
+        max-width: calc(100vw - 32px);
     }
     .skills-grid {
         grid-template-columns: 1fr;

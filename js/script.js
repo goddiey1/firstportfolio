@@ -11,8 +11,6 @@ hamburger.addEventListener('click', () => {
     // Update aria-expanded
     hamburger.setAttribute('aria-expanded', isActive);
 
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isActive ? 'hidden' : '';
 });
 
 // Close menu when a link is clicked
@@ -21,7 +19,6 @@ navLinksItems.forEach(link => {
         hamburger.classList.remove('active');
         navLinks.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
     });
 });
 
@@ -31,7 +28,6 @@ document.addEventListener('click', (e) => {
         hamburger.classList.remove('active');
         navLinks.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
     }
 });
 
@@ -41,7 +37,6 @@ document.addEventListener('keydown', (e) => {
         hamburger.classList.remove('active');
         navLinks.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
     }
 });
 
