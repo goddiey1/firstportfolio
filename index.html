@@ -283,30 +283,35 @@
         <section id="contact">
             <h2>Get In Touch</h2>
             <p>I'm always open to discussing new opportunities, collaborations, or just chatting about tech!</p>
+
             <div class="contact-info">
-                <p><strong>Email:</strong> <a href="mailto:wambugugodfrey7@gmail.com">wambugugodfrey7@gmail.com</a></p>
-                <p><strong>WhatsApp:</strong> <a
-                        href="https://wa.me/254745548077?text=Hi%20Godfrey!%20I%20found%20your%20portfolio."
-                        target="_blank" class="whatsapp-link">💬 Chat on WhatsApp</a></p>
-                <form id="contactForm" novalidate>
+                <p><strong>Email:</strong>
+                    <a href="mailto:wambugugodfrey7@gmail.com">wambugugodfrey7@gmail.com</a>
+                </p>
+                <p><strong>WhatsApp:</strong>
+                    <a href="https://wa.me/254745548077?text=Hi%20Godfrey!%20I%20found%20your%20portfolio."
+                        target="_blank" class="whatsapp-link">💬 Chat on WhatsApp</a>
+                </p>
+
+                <!-- ✅ Corrected form -->
+                <form id="contactForm" action="https://formspree.io/f/xgoddley" method="POST">
                     <label>Email</label>
-                    <form action="https://formspree.io/f/xgoddley" method="POST">
-                        <input type="email" id="email" required>
-                        <small id="emailError"></small>
-                        <button>Send</button>
-                    </form>
-                    <!-- Add more contact methods as needed -->
-                    <!-- <p><strong>GitHub:</strong> <a href="#" target="_blank">github.com/yourusername</a></p> -->
-                    <!-- <p><strong>LinkedIn:</strong> <a href="#" target="_blank">linkedin.com/in/yourprofile</a></p> -->
+                    <input type="email" name="email" id="email" required>
+
+                    <label>Message</label>
+                    <textarea name="message" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
             </div>
         </section>
-    </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Developed by Godfrey Wambugu. All rights reserved.</p>
-    </footer>
 
-    <script src="js/script.js?v=2"></script>
+        <footer class="site-footer">
+            <p>&copy; 2026 Developed by Godfrey Wambugu. All rights reserved.</p>
+        </footer>
+
+        <script src="js/script.js?v=2"></script>
 
 
 </body>
