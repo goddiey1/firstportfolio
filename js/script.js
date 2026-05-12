@@ -131,11 +131,11 @@ const observer = new IntersectionObserver(function (entries, observer) {
             // Apply a slight stagger delay for batch entries
             entry.target.style.animationDelay = `${delayCounter * 0.15}s`;
             entry.target.classList.add('animate-fade-up');
-            
+
             // Clean up the inline opacity so the animation takes over
             entry.target.style.opacity = '';
             observer.unobserve(entry.target);
-            
+
             delayCounter++;
             clearTimeout(delayResetTimeout);
             delayResetTimeout = setTimeout(() => {
@@ -198,8 +198,10 @@ const form = document.getElementById("contactForm");
 const email = document.getElementById("email");
 const emailError = document.getElementById("emailError");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // ✅ Validate email
     if (!email.checkValidity()) {
         emailError.textContent = "Enter a valid email address.";
         email.focus();
@@ -208,46 +210,36 @@ form.addEventListener("submit", (e) => {
         emailError.textContent = "";
     }
 
-    // Simulate submission
     const btn = form.querySelector("button");
     const originalText = btn.textContent;
     btn.textContent = "Sending...";
     btn.disabled = true;
 
-    setTimeout(() => {
-        btn.textContent = "✅ Message Sent!";
-        btn.style.backgroundColor = "#2ecc71";
+    try {
+        // ✅ Send to Formspree
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
 
-        // Reset form
-        form.reset();
-
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
-            btn.style.backgroundColor = ""; // Reverts to CSS
-        }, 3000);
-    }, 2000);
-});
-
-// ==================== DYNAMIC COPYRIGHT YEAR ====================
-// Update copyright year automatically
-const footer = document.querySelector('.site-footer p');
-if (footer) {
-    const currentYear = new Date().getFullYear();
-    footer.innerHTML = `&copy; ${currentYear} Developed by Godfrey Wambugu. All rights reserved.`;
-}
-
-// ==================== EXTERNAL LINK HANDLING ====================
-// Add target="_blank" to external links automatically
-document.querySelectorAll('a[href^="http"]').forEach(link => {
-    if (!link.getAttribute('target')) {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
+        if (response.ok) {
+            btn.textContent = "✅ Message Sent!";
+            btn.style.backgroundColor = "#2ecc71";
+            form.reset();
+        } else {
+            btn.textContent = "❌ Error!";
+            btn.style.backgroundColor = "#e74c3c";
+        }
+    } catch (error) {
+        btn.textContent = "❌ Error!";
+        btn.style.backgroundColor = "#e74c3c";
     }
+
+    // Reset button after 3 seconds
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.backgroundColor = "";
+    }, 3000);
 });
-// ==================== CONSOLE MESSAGE ====================
-// Fun easter egg for developers who inspect your site
-console.log('%c👋 Hello, Developer!', 'color: #667eea; font-size: 20px; font-weight: bold;');
-console.log('%cThanks for checking out my portfolio!', 'color: #764ba2; font-size: 14px;');
-console.log('%cFeel free to reach out: wambugugodfrey7@gmail.com', 'color: #555; font-size: 12px;');
