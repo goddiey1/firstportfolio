@@ -295,8 +295,14 @@
 
                 <!-- ✅ Corrected form -->
                 <form id="contactForm" action="https://formspree.io/f/xgoddley" method="POST">
+                    <!-- Formspree Spam Honeypot -->
+                    <label style="display: none !important;">
+                        Don't fill this out if you're human: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+                    </label>
+                    
                     <label>Email</label>
                     <input type="email" name="email" id="email" required>
+                    <div id="emailError" style="color: #e74c3c; font-size: 0.85rem; margin-top: -10px; margin-bottom: 15px;"></div>
 
                     <label>Message</label>
                     <textarea name="message" required></textarea>
